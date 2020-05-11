@@ -29,6 +29,9 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rspec-rails', '~> 4.0.0'
+  gem 'factory_bot_rails'
+  gem 'rspec-request_describer'
+  gem 'shoulda-matchers'
 end
 
 group :development do
