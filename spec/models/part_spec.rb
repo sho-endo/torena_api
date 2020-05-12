@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Part, type: :model do
-  let(:part) { create(:part) }
-
   it 'has a valid factory' do
     expect(create(:part)).to be_truthy
   end
 
   describe 'validation' do
+    let(:part) { create(:part) }
+
     it { is_expected.to validate_presence_of :name }
     it { is_expected.to validate_presence_of :user_id }
 
@@ -26,8 +26,8 @@ RSpec.describe Part, type: :model do
   end
 
   it 'associated menus should be destroyed' do
+    part = create(:part)
     part.menus.create(name: 'ショルダープレス')
-
     expect{ part.destroy }.to change{ Menu.count }.by(-1)
   end
 end
