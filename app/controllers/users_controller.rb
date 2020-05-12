@@ -9,7 +9,9 @@ class UsersController < ApplicationController
         user: user
       }, status: 200
     else
-      head 500
+      render json: {
+        message: user.errors.full_messages
+      }, status: 400
     end
   end
 
