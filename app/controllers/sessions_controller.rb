@@ -1,6 +1,4 @@
 class SessionsController < ApplicationController
-  include CurrentUserConcern
-
   def create
     user = User.find_by(email: params[:session][:email].downcase)
 
@@ -12,20 +10,25 @@ class SessionsController < ApplicationController
         user: user
       }, status: 200
     else
-      head 401
+      render json: {
+        message: 'ログインに失敗しました'
+      }
     end
   end
 
   def destroy
     reset_session
-    render json: { logged_in: false }, status: 200
+    render json: {
+      message: 'ログアウトしました',
+      logged_in: false
+    }, status: 200
   end
 
   def logged_in
-    if @current_user
+    if logged_in?
       render json: {
         logged_in: true,
-        user: @current_user
+        user: current_user
       }
     else
       render json: {
