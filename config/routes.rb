@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :parts, only: [:index]
+  resources :parts, only: [:index], defaults: { format: :json }
   resources :users, only: [:create]
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
