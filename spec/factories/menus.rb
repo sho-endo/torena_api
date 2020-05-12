@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :menu do
-    name { "MyString" }
-    part { nil }
+    name { 'ベンチプレス' }
+    association :part
+    # user { part.user }
   end
 end
