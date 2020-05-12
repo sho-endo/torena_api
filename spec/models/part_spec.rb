@@ -24,4 +24,10 @@ RSpec.describe Part, type: :model do
       expect(duplicated_part).not_to be_valid
     end
   end
+
+  it 'associated menus should be destroyed' do
+    part.menus.create(name: 'ショルダープレス')
+
+    expect{ part.destroy }.to change{ Menu.count }.by(-1)
+  end
 end
