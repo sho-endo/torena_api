@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :part do
-    name { "MyString" }
-    user { nil }
+    name { '胸' }
+    association :user
   end
 end
