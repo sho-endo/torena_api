@@ -5,4 +5,23 @@ class PartsController < ApplicationController
     @parts = @current_user.parts
     @include_menu_names = params[:include_menus] == 'true'
   end
+
+  def create
+    part = current_user.parts.build(part_params)
+    if part.save
+      render json: {
+        message: "#{part.name}を作成しました",
+        part: part
+      }, satus: 200
+    else
+      render json: {
+        message: part.errors.full_messages
+      }, status: 400
+    end
+  end
+
+  private
+    def part_params
+      params.require(:part).permit(:name)
+    end
 end
