@@ -5,5 +5,5 @@ class Part < ApplicationRecord
                    uniqueness: { scope: :user_id, case_sensitive: true }
   validates :user_id, presence: true
 
-  has_many :menus, dependent: :destroy
+  has_many :menus, -> { order "updated_at DESC" }, dependent: :destroy
 end

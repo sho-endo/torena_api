@@ -8,7 +8,7 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX }, length: { maximum: 255 }
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
-  has_many :parts, dependent: :destroy
+  has_many :parts, -> { order "updated_at DESC" },dependent: :destroy
 
   private
 
