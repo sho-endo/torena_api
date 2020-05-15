@@ -3,7 +3,8 @@ class MenusController < ApplicationController
   before_action :validate_part_id
 
   def create
-    menu = current_user.parts.menus.build(menu_params)
+    part = current_user.parts.find(params[:part_id])
+    menu = part.menus.build(menu_params)
     if menu.save
       render json: {
         message: "#{menu.name}を追加しました",
