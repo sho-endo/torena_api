@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :parts, only: [:index, :create], defaults: { format: :json } do
+  resources :parts, only: [:index, :create, :destroy], defaults: { format: :json } do
     resources :menus, only: [:create]
   end
   resources :users, only: [:create]
