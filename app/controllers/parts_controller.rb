@@ -20,6 +20,17 @@ class PartsController < ApplicationController
     end
   end
 
+  def destroy
+    if (part = current_user.parts.find_by(id: params[:id]))
+      part.destroy
+      render json: {
+        message: "「#{part.name}」を削除しました"
+      }, status: 200
+    else
+      render json: { message: 'Bad Request' }, status: 400
+    end
+  end
+
   private
     def part_params
       params.require(:part).permit(:name)

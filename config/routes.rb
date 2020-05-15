@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :parts, only: [:index, :create], defaults: { format: :json } do
-    resources :menus, only: [:create]
+  resources :parts, only: [:index, :create, :destroy], defaults: { format: :json } do
+    resources :menus, only: [:create, :destroy]
   end
   resources :users, only: [:create]
   post '/login', to: 'sessions#create'
