@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     else
       render json: {
         message: 'ログインに失敗しました'
-      }
+      }, status: 401
     end
   end
 
