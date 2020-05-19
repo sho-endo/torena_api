@@ -2,7 +2,7 @@ class PartsController < ApplicationController
   before_action :authenticate_user
 
   def index
-    @parts = @current_user.parts
+    @parts = @current_user.parts.includes(:menus)
     @include_menu_names = params[:include_menus] == 'true'
   end
 
