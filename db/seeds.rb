@@ -1,4 +1,5 @@
 user = User.create(email: 'a@example.com', password: 'password')
+demo_user = User.create(email: 'demo@example.com', password: 'password')
 
 example_menus = [
   {
@@ -29,6 +30,14 @@ example_menus = [
 
 example_menus.each do |example_menu|
   part = user.parts.create(name: example_menu[:part])
+
+  example_menu[:menus].each do |menu|
+    part.menus.create(name: menu)
+  end
+end
+
+example_menus.each do |example_menu|
+  part = demo_user.parts.create(name: example_menu[:part])
 
   example_menu[:menus].each do |menu|
     part.menus.create(name: menu)
